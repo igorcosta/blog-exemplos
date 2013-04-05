@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="http://css.cdn.tl/normalize.css">
+<meta charset="utf-8">
+<title>Scroll Infinito</title>
+<style type="text/css">
+body, ul,li,img,h4,p{
+    margin:auto;
+    font-family:'Droid Sans';
+}
+ul {
+	margin-left: -40px;
+	list-style:none;
+}
+li {
+    color:#111;
+    height: 100px;
+    border-bottom:1px solid #fff;
+    padding:10px;
+}
+li h4 {
+    font-weight:400;
+    font-size:20px;
+    padding:0;
+}
+li img {
+    padding-right:10px;
+    float:left;
+    display:block;
+    vertical-align:text-top;
+}
+li div {
+    display:inline;
+}
+li p {
+    font-weight:300;
+    font-size:12px;
+}
+#conteudo {
+    width:100%;
+    background:rgba(0,0,0,0.1);
+    overflow:auto;
+}
+</style>
+
+
+<script type="text/javascript" charset="utf-8" async defer>
+var contador = 1;
+
+$(document).ready(function () {
+    carregar();
+    $(this).on('scroll', function () {
+        if ($(window).scrollTop() + $(window).height() >= $(this).height()) {
+            carregar();
+        }
+    });
+});
+
+function carregar() {
+    for (var i = 0; i < 10; i++) {
+        $("#lista").append('<li><img src="http://placehold.it/100x100"/><div><h4>' + contador + ' Item</h4><p>Descrição do item '+contador+'</p></div></li>');
+        contador++;
+    }
+}
+
+</script>
+</head>
+
+<body>
+	<div id="conteudo">
+    <ul id="lista"></ul>
+</div
+</body>
+</html>
